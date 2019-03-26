@@ -7,6 +7,11 @@ target 'Hitch' do
   # Pods for Hitch
 
 pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+
+pod 'SideMenu'
 
   target 'HitchTests' do
     inherit! :search_paths
