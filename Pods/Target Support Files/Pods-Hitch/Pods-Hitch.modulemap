@@ -1,0 +1,6 @@
+framework module Pods_Hitch {
+  umbrella header "Pods-Hitch-umbrella.h"
+
+  export *
+  module * { export * }
+}

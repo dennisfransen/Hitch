@@ -1,0 +1,6 @@
+framework module Pods_HitchTests {
+  umbrella header "Pods-HitchTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
