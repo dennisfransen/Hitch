@@ -264,7 +264,7 @@ People at the roads!</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="n8F-r3-glA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firstname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYr-DF-IBO">
@@ -281,7 +281,7 @@ People at the roads!</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3JH-Ib-0uK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lastname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdY-hd-rby">
@@ -298,7 +298,7 @@ People at the roads!</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BPF-uS-qyO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geM-Wz-77N">
@@ -315,7 +315,7 @@ People at the roads!</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qhR-1S-nve"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgz-5p-2dN">
@@ -332,7 +332,7 @@ People at the roads!</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dGN-tr-VRj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14r-De-gkk">
@@ -428,30 +428,35 @@ People at the roads!</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background Home" translatesAutoresizingMaskIntoConstraints="NO" id="uiT-h6-08s">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background Home" translatesAutoresizingMaskIntoConstraints="NO" id="HcJ-xA-zRA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thumb" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-Gb-p4e">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Thumb" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-Gb-p4e">
                                 <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="FFe-2R-aVq"/>
-                                    <constraint firstAttribute="height" constant="240" id="uQ1-I2-Z1t"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="IRd-TB-Ces" appends="YES" id="DBW-RY-iiA"/>
                                 </connections>
                             </imageView>
+                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8A-K2-KH6">
+                                <rect key="frame" x="100" y="517" width="175" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57254901960000004" green="0.86274509799999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="32"/>
+                                <state key="normal" title="Available"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="availableButtonPressed:" destination="Zu7-7l-CtB" eventType="touchUpInside" id="nwg-cG-p77"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="uiT-h6-08s" firstAttribute="trailing" secondItem="NlR-Eh-eVP" secondAttribute="trailing" id="2D5-7x-ALC"/>
-                            <constraint firstItem="uiT-h6-08s" firstAttribute="leading" secondItem="NlR-Eh-eVP" secondAttribute="leading" id="A6T-1y-Z2n"/>
-                            <constraint firstItem="uiT-h6-08s" firstAttribute="bottom" secondItem="NlR-Eh-eVP" secondAttribute="bottom" id="Ymj-Ar-k5P"/>
-                            <constraint firstItem="CcG-Gb-p4e" firstAttribute="centerY" secondItem="RLy-Bh-ElO" secondAttribute="centerY" id="dRf-WL-srL"/>
-                            <constraint firstItem="uiT-h6-08s" firstAttribute="top" secondItem="RLy-Bh-ElO" secondAttribute="top" id="i1e-pp-aAF"/>
-                            <constraint firstItem="CcG-Gb-p4e" firstAttribute="centerX" secondItem="RLy-Bh-ElO" secondAttribute="centerX" id="yun-1U-L9Y"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NlR-Eh-eVP"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hitch" id="j0A-YA-fFz">
@@ -462,6 +467,7 @@ People at the roads!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="availableButton" destination="C8A-K2-KH6" id="T4R-99-K4y"/>
                         <segue destination="7zh-J2-lGn" kind="presentation" identifier="homeToSidemenu" id="1nv-7Z-7kt"/>
                         <segue destination="yyD-fJ-aMY" kind="showDetail" identifier="homeToMap" id="Ne1-nm-dIF"/>
                     </connections>
@@ -568,7 +574,7 @@ People at the roads!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TML-rv-jUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4290.3999999999996" y="-768.66566716641682"/>
+            <point key="canvasLocation" x="3945" y="-844"/>
         </scene>
         <!--Map Search Table-->
         <scene sceneID="mtb-sw-926">
@@ -612,7 +618,7 @@ People at the roads!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNV-bG-ZuJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5184.8000000000002" y="-769.56521739130437"/>
+            <point key="canvasLocation" x="4838" y="-845"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="aJ8-xb-olc">
@@ -838,21 +844,6 @@ People at the roads!</string>
             </objects>
             <point key="canvasLocation" x="3452" y="833.43328335832086"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ee3-6y-OUt">
-            <objects>
-                <viewController id="p21-1V-nxD" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gJr-4O-o8A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="qLu-HQ-2B2"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mc4-BW-bj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5236" y="836"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="XK2-JM-xd4">
             <objects>
@@ -869,7 +860,7 @@ People at the roads!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faO-CT-8Jx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3351.1999999999998" y="-768.66566716641682"/>
+            <point key="canvasLocation" x="2993" y="-844"/>
         </scene>
     </scenes>
     <resources>

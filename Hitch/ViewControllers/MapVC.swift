@@ -19,10 +19,8 @@ class MapVC: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    let locationManager = CLLocationManager()
     let regionInMeters : Double = 5000
     let db = Firestore.firestore()
-//    var region = MKCoordinateRegion()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var resultSearchController: UISearchController? = nil
@@ -32,9 +30,11 @@ class MapVC: UIViewController {
         super.viewDidLoad()
 //        checkLocationServices()
         
+        let locationManager = appDelegate.locationManager
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
      
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "mapsearchtable") as! MapSearchTable
@@ -65,7 +65,7 @@ extension MapVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
+            appDelegate.locationManager.requestLocation()
         }
     }
     

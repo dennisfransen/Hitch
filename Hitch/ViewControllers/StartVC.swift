@@ -24,7 +24,6 @@ class StartVC: UIViewController {
         if userDefault.bool(forKey: "usersignedin") {
             performSegue(withIdentifier: "startToHome", sender: self)
         }
-        
     }
     
     @IBAction func createAnAccountButtonPressed(_ sender: UIButton) {

@@ -26,6 +26,7 @@
 		67A1B6F0224A1FA3001DFD39 /* HitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1B6EF224A1FA3001DFD39 /* HitchTests.swift */; };
 		67A1B6FB224A1FA3001DFD39 /* HitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1B6FA224A1FA3001DFD39 /* HitchUITests.swift */; };
 		67A6573F224A21620059342B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67A6573E224A21620059342B /* GoogleService-Info.plist */; };
+		67B5F660224BDE6D00E84D7D /* DistCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5F65F224BDE6D00E84D7D /* DistCalculator.swift */; };
 		BCBF1CF401FD781634FF849B /* Pods_HitchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9253DC87ABEA3A2AC9E62AC /* Pods_HitchUITests.framework */; };
 		D93B78DE23B13BA26E0C8FA0 /* Pods_Hitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE953C338170D0B0A83E42B0 /* Pods_Hitch.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		67A1B6FA224A1FA3001DFD39 /* HitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitchUITests.swift; sourceTree = "<group>"; };
 		67A1B6FC224A1FA3001DFD39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67A6573E224A21620059342B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67B5F65F224BDE6D00E84D7D /* DistCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistCalculator.swift; sourceTree = "<group>"; };
 		6FF8A00870C3F40A39C150FB /* Pods_HitchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HitchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE953C338170D0B0A83E42B0 /* Pods_Hitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9253DC87ABEA3A2AC9E62AC /* Pods_HitchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HitchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 				6725EC11224A3DEE001792D4 /* Sidemenu.swift */,
 				6725EC13224A3DFB001792D4 /* SidemenuCell.swift */,
 				67569CF3224B8FD400266037 /* MapSearchTable.swift */,
+				67B5F65F224BDE6D00E84D7D /* DistCalculator.swift */,
 			);
 			path = Supportive;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67B5F660224BDE6D00E84D7D /* DistCalculator.swift in Sources */,
 				6725EC0C224A2D55001792D4 /* RegisterVC.swift in Sources */,
 				6725EC10224A310D001792D4 /* HomeVC.swift in Sources */,
 				67A1B6DB224A1FA1001DFD39 /* AppDelegate.swift in Sources */,
@@ -663,7 +667,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YANNM2748;
 				INFOPLIST_FILE = Hitch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -683,7 +687,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YANNM2748;
 				INFOPLIST_FILE = Hitch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

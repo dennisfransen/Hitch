@@ -25,6 +25,8 @@ class ProfileVC: UIViewController {
     var trayUp: CGPoint!
     var trayDown: CGPoint!
     
+    var panGesture = UIPanGestureRecognizer()
+    
     override func loadView() {
         super.loadView()
         retriveUserProfileImageFromFirebaseStorage()
@@ -34,16 +36,18 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trayDownOffset = 100
+        trayDownOffset = 150
         trayUp = profileView.center
-        trayDown = CGPoint(x: profileView.center.x, y: profileView.center.y + trayDownOffset)
+        trayDown = CGPoint(x: profileView.center.x, y: profileView.center.y - trayDownOffset)
+        
+        
     }
     
     @IBAction func panUp(_ sender: UIPanGestureRecognizer) {
+        
         let translation = sender.translation(in: view)
         let velocity = sender.velocity(in: view)
-    
-        
+
         if sender.state == UIGestureRecognizer.State.began {
             trayOriginalCenter = profileView.center
         } else if sender.state == UIGestureRecognizer.State.changed {
@@ -51,16 +55,18 @@ class ProfileVC: UIViewController {
         } else if sender.state == UIGestureRecognizer.State.ended {
             if velocity.y > 0 {
                 UIView.animate(withDuration: 0.3) {
-                    self.profileView.center = self.trayDown
+                    self.profileView.center = self.trayUp
                 }
             } else {
                 UIView.animate(withDuration: 0.3) {
-                    self.profileView.center = self.trayUp
+                    self.profileView.center = self.trayDown
                 }
             }
         }
+        
     }
     
+ 
     @IBAction func editProfileButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "profileToEditProfile", sender: self)
     }

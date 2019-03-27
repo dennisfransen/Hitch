@@ -135,7 +135,7 @@ extension MapSearchTable {
                     if let coords = document.get("currentLocation") {
                         let otherLocation = coords as! GeoPoint
                         
-                        if self.distance(location1: myLocation, location2: otherLocation) < 3000 {
+                        if DistCalculator.distance(location1: myLocation, location2: otherLocation) < 3000 {
                             print("HÄMTA MIG")
                             
                             // Push notis till användare som är i närheten!
@@ -149,17 +149,6 @@ extension MapSearchTable {
                 }
             }
         }
-        
     }
     
-    func distance(location1: GeoPoint, location2: GeoPoint) -> Double {
-        
-        let coordinate1 = CLLocation(latitude: location1.latitude, longitude: location1.longitude)
-        let coordinate2 = CLLocation(latitude: location2.latitude, longitude: location2.longitude)
-        
-        let distanceInMeters = coordinate1.distance(from: coordinate2)
-        
-        return distanceInMeters
-        //        return sqrt(pow((location1.latitude - location2.latitude), 2) + pow((location1.longitude - location2.longitude), 2))
-    }
 }
