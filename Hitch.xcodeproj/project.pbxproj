@@ -16,6 +16,8 @@
 		6725EC14224A3DFB001792D4 /* SidemenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6725EC13224A3DFB001792D4 /* SidemenuCell.swift */; };
 		6725EC16224A43CA001792D4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6725EC15224A43CA001792D4 /* ProfileVC.swift */; };
 		6725EC18224A4C3A001792D4 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6725EC17224A4C3A001792D4 /* NavigationVC.swift */; };
+		67569CEE224A73AE00266037 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67569CED224A73AE00266037 /* SettingsVC.swift */; };
+		67569CF0224A787800266037 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67569CEF224A787800266037 /* MapVC.swift */; };
 		67A1B6DB224A1FA1001DFD39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1B6DA224A1FA1001DFD39 /* AppDelegate.swift */; };
 		67A1B6E0224A1FA1001DFD39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A1B6DE224A1FA1001DFD39 /* Main.storyboard */; };
 		67A1B6E2224A1FA3001DFD39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A1B6E1224A1FA3001DFD39 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		6725EC13224A3DFB001792D4 /* SidemenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidemenuCell.swift; sourceTree = "<group>"; };
 		6725EC15224A43CA001792D4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		6725EC17224A4C3A001792D4 /* NavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
+		67569CED224A73AE00266037 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		67569CEF224A787800266037 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		67A1B6D7224A1FA1001DFD39 /* Hitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A1B6DA224A1FA1001DFD39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67A1B6DF224A1FA1001DFD39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				6725EC0F224A310D001792D4 /* HomeVC.swift */,
 				6725EC15224A43CA001792D4 /* ProfileVC.swift */,
 				6725EC17224A4C3A001792D4 /* NavigationVC.swift */,
+				67569CED224A73AE00266037 /* SettingsVC.swift */,
+				67569CEF224A787800266037 /* MapVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -285,6 +291,14 @@
 				TargetAttributes = {
 					67A1B6D6224A1FA1001DFD39 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					67A1B6EA224A1FA3001DFD39 = {
 						CreatedOnToolsVersion = 10.2;
@@ -461,10 +475,12 @@
 				67A1B6DB224A1FA1001DFD39 /* AppDelegate.swift in Sources */,
 				6725EC18224A4C3A001792D4 /* NavigationVC.swift in Sources */,
 				6725EC14224A3DFB001792D4 /* SidemenuCell.swift in Sources */,
+				67569CF0224A787800266037 /* MapVC.swift in Sources */,
 				6725EC16224A43CA001792D4 /* ProfileVC.swift in Sources */,
 				6725EC0E224A30CD001792D4 /* SignInVC.swift in Sources */,
 				6725EC0A224A2456001792D4 /* StartVC.swift in Sources */,
 				6725EC12224A3DEE001792D4 /* Sidemenu.swift in Sources */,
+				67569CEE224A73AE00266037 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

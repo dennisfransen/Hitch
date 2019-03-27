@@ -34,9 +34,6 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        retriveNameAndBioFromFirebaseDatabase()
-//        retriveUserProfileImageFromFirebaseStorage()
-        
         trayDownOffset = 100
         trayUp = profileView.center
         trayDown = CGPoint(x: profileView.center.x, y: profileView.center.y + trayDownOffset)
@@ -62,6 +59,10 @@ class ProfileVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func editProfileButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "profileToEditProfile", sender: self)
     }
     
     func retriveNameAndBioFromFirebaseDatabase() {

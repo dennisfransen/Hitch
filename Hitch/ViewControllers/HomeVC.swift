@@ -19,4 +19,8 @@ class HomeVC: UIViewController {
     @IBAction func sidemenuButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "homeToSidemenu", sender: self)
     }
+    
+    @IBAction func thumbGesturePressed(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "homeToMap", sender: self)
+    }
 }

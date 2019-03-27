@@ -431,13 +431,26 @@ People at the roads!</string>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background Home" translatesAutoresizingMaskIntoConstraints="NO" id="uiT-h6-08s">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thumb" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-Gb-p4e">
+                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="FFe-2R-aVq"/>
+                                    <constraint firstAttribute="height" constant="240" id="uQ1-I2-Z1t"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="IRd-TB-Ces" appends="YES" id="DBW-RY-iiA"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="uiT-h6-08s" firstAttribute="trailing" secondItem="NlR-Eh-eVP" secondAttribute="trailing" id="2D5-7x-ALC"/>
                             <constraint firstItem="uiT-h6-08s" firstAttribute="leading" secondItem="NlR-Eh-eVP" secondAttribute="leading" id="A6T-1y-Z2n"/>
                             <constraint firstItem="uiT-h6-08s" firstAttribute="bottom" secondItem="NlR-Eh-eVP" secondAttribute="bottom" id="Ymj-Ar-k5P"/>
+                            <constraint firstItem="CcG-Gb-p4e" firstAttribute="centerY" secondItem="RLy-Bh-ElO" secondAttribute="centerY" id="dRf-WL-srL"/>
                             <constraint firstItem="uiT-h6-08s" firstAttribute="top" secondItem="RLy-Bh-ElO" secondAttribute="top" id="i1e-pp-aAF"/>
+                            <constraint firstItem="CcG-Gb-p4e" firstAttribute="centerX" secondItem="RLy-Bh-ElO" secondAttribute="centerX" id="yun-1U-L9Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NlR-Eh-eVP"/>
                     </view>
@@ -450,9 +463,15 @@ People at the roads!</string>
                     </navigationItem>
                     <connections>
                         <segue destination="7zh-J2-lGn" kind="presentation" identifier="homeToSidemenu" id="1nv-7Z-7kt"/>
+                        <segue destination="GuE-3H-Aac" kind="showDetail" identifier="homeToMap" id="Dmb-Hw-LwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64z-Vf-tlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="IRd-TB-Ces">
+                    <connections>
+                        <action selector="thumbGesturePressed:" destination="Zu7-7l-CtB" id="IKw-Zw-z4E"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2092" y="25.637181409295355"/>
         </scene>
@@ -510,28 +529,57 @@ People at the roads!</string>
                     <view key="view" contentMode="scaleToFill" id="H4p-8A-ZKb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Mgs-7q-wAS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzc-bz-1mP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3535" y="836"/>
+            <point key="canvasLocation" x="4374" y="835"/>
         </scene>
-        <!--View Controller-->
+        <!--MapVC-->
         <scene sceneID="PxH-pK-DyV">
             <objects>
-                <viewController id="GuE-3H-Aac" sceneMemberID="viewController">
+                <viewController id="GuE-3H-Aac" customClass="MapVC" customModule="Hitch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wsu-4c-tAV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QM9-pf-9Wj">
+                                <rect key="frame" x="0.0" y="62" width="375" height="605"/>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZdG-UY-X6L">
+                                <rect key="frame" x="0.0" y="18" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="Wfw-hr-EOi">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="mcW-Th-Byi"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="71x-D9-fNn">
+                                            <connections>
+                                                <action selector="searchButtonPressed:" destination="GuE-3H-Aac" id="6yC-6t-9ZI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QM9-pf-9Wj" firstAttribute="leading" secondItem="Wsu-4c-tAV" secondAttribute="leading" id="5yl-02-GKa"/>
+                            <constraint firstAttribute="trailing" secondItem="QM9-pf-9Wj" secondAttribute="trailing" id="99x-rS-eIO"/>
+                            <constraint firstAttribute="bottom" secondItem="QM9-pf-9Wj" secondAttribute="bottom" id="BFw-uc-vce"/>
+                            <constraint firstItem="QM9-pf-9Wj" firstAttribute="top" secondItem="Lgk-Zd-xrC" secondAttribute="top" constant="42" id="MXa-jz-j7l"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Lgk-Zd-xrC"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="QM9-pf-9Wj" id="Gi7-cG-MUC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TML-rv-jUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2092" y="-767"/>
+            <point key="canvasLocation" x="2092" y="-767.76611694152928"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="aJ8-xb-olc">
@@ -566,13 +614,13 @@ People at the roads!</string>
                                 <rect key="frame" x="0.0" y="482" width="375" height="900"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cq-Nh-OsC">
-                                        <rect key="frame" x="242" y="25" width="120" height="46"/>
+                                        <rect key="frame" x="227" y="25" width="135" height="46"/>
                                         <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="IAA-wL-hCe"/>
+                                            <constraint firstAttribute="width" constant="135" id="IAA-wL-hCe"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="19"/>
-                                        <state key="normal" title="Start chat">
+                                        <state key="normal" title="Edit profile">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -580,14 +628,17 @@ People at the roads!</string>
                                                 <integer key="value" value="24"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="editProfileButtonPressed:" destination="X7Z-2c-Fyx" eventType="touchUpInside" id="qhN-Uc-a7N"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sweden, Trollhättan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0w-To-W0W">
-                                        <rect key="frame" x="17" y="51" width="217" height="20"/>
+                                        <rect key="frame" x="17" y="51" width="202" height="20"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alexander Fransén" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tur-bx-eVj">
-                                        <rect key="frame" x="17" y="23" width="217" height="27"/>
+                                        <rect key="frame" x="17" y="23" width="202" height="27"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="19"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -645,6 +696,7 @@ People at the roads!</string>
                         <outlet property="firstnameField" destination="tur-bx-eVj" id="OhB-aP-lQT"/>
                         <outlet property="profileImage" destination="dTJ-JD-XHc" id="JsX-hh-6X1"/>
                         <outlet property="profileView" destination="fuW-48-HGV" id="czy-24-wu1"/>
+                        <segue destination="blE-3J-kBo" kind="show" identifier="profileToEditProfile" id="CIm-92-DuS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfj-9c-2Dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,20 +708,102 @@ People at the roads!</string>
             </objects>
             <point key="canvasLocation" x="2652" y="834.33283358320841"/>
         </scene>
-        <!--View Controller-->
+        <!--SettingsVC-->
         <scene sceneID="GqO-wD-R9t">
             <objects>
-                <viewController id="blE-3J-kBo" sceneMemberID="viewController">
+                <viewController id="blE-3J-kBo" customClass="SettingsVC" customModule="Hitch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GFk-C5-uVh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="Background Register" translatesAutoresizingMaskIntoConstraints="NO" id="oah-Su-BBD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="538"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="538" id="NUx-9S-eJG"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e83-Vx-OK1">
+                                <rect key="frame" x="0.0" y="337" width="375" height="330"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hlG-c4-VRl">
+                                        <rect key="frame" x="12" y="76" width="351" height="246"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjG-Bw-Zpq">
+                                        <rect key="frame" x="232" y="25" width="135" height="46"/>
+                                        <color key="backgroundColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="7bF-lH-lgZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="19"/>
+                                        <state key="normal" title="Save changes">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveSettingsPressed:" destination="blE-3J-kBo" eventType="touchUpInside" id="dDE-V3-JvA"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Förnamn Efternamn" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gty-ET-Z7T">
+                                        <rect key="frame" x="10" y="14" width="214" height="31"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country, City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFO-AZ-ZjB">
+                                        <rect key="frame" x="10" y="48" width="214" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="pjG-Bw-Zpq" firstAttribute="leading" secondItem="gty-ET-Z7T" secondAttribute="trailing" constant="8" symbolic="YES" id="Air-oX-GXr"/>
+                                    <constraint firstItem="gty-ET-Z7T" firstAttribute="leading" secondItem="e83-Vx-OK1" secondAttribute="leading" constant="10" id="BH1-ZA-MSr"/>
+                                    <constraint firstItem="gty-ET-Z7T" firstAttribute="top" secondItem="e83-Vx-OK1" secondAttribute="top" constant="14" id="D0p-3I-Sku"/>
+                                    <constraint firstItem="pjG-Bw-Zpq" firstAttribute="leading" secondItem="JFO-AZ-ZjB" secondAttribute="trailing" constant="8" symbolic="YES" id="Dwx-pG-doI"/>
+                                    <constraint firstItem="hlG-c4-VRl" firstAttribute="top" secondItem="pjG-Bw-Zpq" secondAttribute="bottom" constant="5" id="FnH-IY-jdv"/>
+                                    <constraint firstAttribute="bottom" secondItem="hlG-c4-VRl" secondAttribute="bottom" constant="8" id="H8y-FL-eWk"/>
+                                    <constraint firstItem="hlG-c4-VRl" firstAttribute="top" secondItem="JFO-AZ-ZjB" secondAttribute="bottom" constant="-2" id="Neo-aW-cDr"/>
+                                    <constraint firstItem="pjG-Bw-Zpq" firstAttribute="top" secondItem="e83-Vx-OK1" secondAttribute="top" constant="25" id="S5B-sg-kGs"/>
+                                    <constraint firstAttribute="trailing" secondItem="hlG-c4-VRl" secondAttribute="trailing" constant="12" id="Zst-zu-AQD"/>
+                                    <constraint firstAttribute="height" constant="330" id="ax0-cl-LQh"/>
+                                    <constraint firstItem="pjG-Bw-Zpq" firstAttribute="trailing" secondItem="e83-Vx-OK1" secondAttribute="trailingMargin" id="eBf-Xn-G8e"/>
+                                    <constraint firstItem="hlG-c4-VRl" firstAttribute="leading" secondItem="e83-Vx-OK1" secondAttribute="leading" constant="12" id="mf4-R2-skY"/>
+                                    <constraint firstItem="JFO-AZ-ZjB" firstAttribute="leading" secondItem="e83-Vx-OK1" secondAttribute="leading" constant="10" id="t8a-Kd-MbZ"/>
+                                    <constraint firstItem="JFO-AZ-ZjB" firstAttribute="top" secondItem="gty-ET-Z7T" secondAttribute="bottom" constant="3" id="weo-el-NQo"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="H60-D3-PCg" firstAttribute="bottom" secondItem="e83-Vx-OK1" secondAttribute="bottom" id="5Zh-co-TkR"/>
+                            <constraint firstItem="oah-Su-BBD" firstAttribute="top" secondItem="GFk-C5-uVh" secondAttribute="top" id="6Ri-W0-S2w"/>
+                            <constraint firstItem="oah-Su-BBD" firstAttribute="leading" secondItem="GFk-C5-uVh" secondAttribute="leading" id="E62-8I-hd9"/>
+                            <constraint firstAttribute="trailing" secondItem="oah-Su-BBD" secondAttribute="trailing" id="fD7-fh-1A1"/>
+                            <constraint firstItem="e83-Vx-OK1" firstAttribute="leading" secondItem="GFk-C5-uVh" secondAttribute="leading" id="r8q-hY-SF6"/>
+                            <constraint firstAttribute="trailing" secondItem="e83-Vx-OK1" secondAttribute="trailing" id="rwv-dg-Qee"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="H60-D3-PCg"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVU-oi-5CY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4393" y="836"/>
+            <point key="canvasLocation" x="3452" y="833.43328335832086"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ee3-6y-OUt">
@@ -692,6 +826,7 @@ People at the roads!</string>
         <image name="Background Home" width="1024" height="1820"/>
         <image name="Background Register" width="828" height="1792"/>
         <image name="Background Signin" width="750" height="1334"/>
+        <image name="Thumb" width="1000" height="1080"/>
         <image name="icons8-menu-30 White" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
