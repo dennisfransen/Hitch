@@ -20,15 +20,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UNUserNotificationCen
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { (granted, error) in
-            if granted {
-                print("Notifications is allowed")
-            } else {
-                print("Notifications is not allowed!")
-            }
-        }
-  
+        retriveUserInformationFromFireStore()
+        retriveUserProfileImageFromFirebaseStorage()
     }
     
     @IBAction func sidemenuButtonPressed(_ sender: UIBarButtonItem) {
@@ -45,14 +38,13 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UNUserNotificationCen
         availableButton.isSelected = !availableButton.isSelected
         availableButton.setTitle(availableButton.isSelected ? "In my car" : "At home", for: .normal)
         if availableButton.isSelected == true {
-            availableButton.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestAlwaysAuthorization()
             locationManager.allowsBackgroundLocationUpdates = true
             locationManager.startUpdatingLocation()
         } else {
-            availableButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            availableButton.backgroundColor = UIColor.orange
             locationManager.stopUpdatingLocation()
             self.appDelegate.arrayOfNearbyUsers.removeAll()
         }
@@ -102,10 +94,12 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UNUserNotificationCen
             if let error = error {
                 print("Error gettings documents: \(error)")
             } else {
-                print("Hello")
                 for document in querySnapshots!.documents {
                     if DistCalculator.distance(location1: document.get("currentLocation") as! GeoPoint , location2: currentLocation) < 3000 {
                         arrayOfNearbyUsers.append(document)
+                        print("")
+                        print("Found a hiker within 3000 meters of your own location!")
+                        print("")
                     }
                 }
                 
@@ -113,6 +107,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UNUserNotificationCen
                     for i in 0...arrayOfNearbyUsers.count - 1 {
                         if arrayOfNearbyUsers[i].documentID != self.appDelegate.arrayOfNearbyUsers[i].documentID {
                             arrayChanged = true
+                            
                             break
                         }
                     }
@@ -148,9 +143,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UNUserNotificationCen
                 if let _ = error {
                     print("Error")
                 } else {
-                    let firstName = DocumentSnapshot!.get("firstName") as! String
-                    let lastName = DocumentSnapshot!.get("lastName") as! String
-                    content.body = "\(firstName) \(lastName) is nearby"
+                    let fullName = DocumentSnapshot!.get("fullName") as! String
+                    content.body = "\(fullName) is nearby"
                     let request: UNNotificationRequest = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                     
@@ -159,6 +153,52 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UNUserNotificationCen
                 
             }
             
+        }
+        
+    }
+    
+    func retriveUserInformationFromFireStore() {
+        
+        let db = Firestore.firestore()
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let userID = currentUser.uid
+        
+        let docRef = db.collection("users").document(userID)
+        docRef.getDocument { (DocumentSnapshot, error) in
+            if let _ = error {
+                print("Error")
+            } else {
+                let fullName = DocumentSnapshot!.get("fullName") as! String
+                let bio = DocumentSnapshot!.get("bio") as! String
+                let cityState = DocumentSnapshot!.get("cityState") as! String
+                
+                self.appDelegate.fullNameOfUser = fullName
+                self.appDelegate.bioOfUser = bio
+                self.appDelegate.cityStateOfUser = cityState
+            }
+        }
+        
+    }
+    
+    func retriveUserProfileImageFromFirebaseStorage() {
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let userID = currentUser.uid
+        
+        let storage = Storage.storage()
+        let pathReference = storage.reference(withPath: "usersProfileImages/\(userID).png")
+        
+        pathReference.getData(maxSize: 2 * 1024 * 1024) { data, error in
+            if let error = error {
+                let image = #imageLiteral(resourceName: "Background Register")
+                //                self.profileImage.image = image
+                self.appDelegate.userProfileImage = image
+                print(error.localizedDescription)
+            } else {
+                //                self.profileImage.image = UIImage(data: data!)!
+                self.appDelegate.userProfileImage = UIImage(data: data!)!
+            }
         }
         
     }

@@ -15,7 +15,7 @@ let myCell = "sidemenuCell"
 class Sidemenu: UITableViewController {
     
     let userDefault = UserDefaults.standard
-    let sidemenuChoice: [String] = ["Profile", "About", "Contact", "Settings", "Sign out"]
+    let sidemenuChoice: [String] = ["Profile", "About", "Sign out"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +46,9 @@ class Sidemenu: UITableViewController {
         switch (indexPath.row) {
         case 0:
             viewController = self.storyboard?.instantiateViewController(withIdentifier: "profile") as! ProfileVC
-        case 1: break
-//            viewController = self.storyboard?.instantiateViewController(withIdentifier: "contact") as! ContactVC
-        case 2: break
-//            viewController = self.storyboard?.instantiateViewController(withIdentifier: "settings") as! SettingsVC
-        case 4:
+        case 1:
+            viewController = self.storyboard?.instantiateViewController(withIdentifier: "contact") as! ContactVC
+        case 2:
             do {
                 try Auth.auth().signOut()
                 userDefault.removeObject(forKey: "usersignedin")
@@ -58,7 +56,6 @@ class Sidemenu: UITableViewController {
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
-//            viewController = self.storyboard?.instantiateViewController(withIdentifier: "start") as! StartVC
             performSegue(withIdentifier: "signoutSegue", sender: self)
             return
         default:

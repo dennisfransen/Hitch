@@ -44,6 +44,7 @@ class MapVC: UIViewController {
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
+        searchBar.backgroundColor = #colorLiteral(red: 0.2644763887, green: 0.2951304018, blue: 0.3525099158, alpha: 1)
         navigationItem.titleView = resultSearchController?.searchBar
         
         resultSearchController?.hidesNavigationBarDuringPresentation = false
@@ -57,6 +58,14 @@ class MapVC: UIViewController {
         guard let myVariable = locationManager.location else { return }
         appDelegate.myLocation = myVariable
 
+    }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        
+        var viewController: UIViewController = UIViewController()
+        viewController = self.storyboard?.instantiateViewController(withIdentifier: "home") as! HomeVC
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
     
 }

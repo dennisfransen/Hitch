@@ -19,7 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var carLocation = CLLocation()
     let locationManager = CLLocationManager()
     var arrayOfNearbyUsers = [QueryDocumentSnapshot]()
-    var processing: Bool = false
+    var processing: Bool = false // Används för pushnotiser senare. Version 2
+    
+    var firstnameOfUser = String()
+    var lastnameOfUser = String()
+    var fullNameOfUser = String()
+    var bioOfUser = String()
+    var userProfileImage : UIImage?
+    var cityStateOfUser = String()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().requestAuthorization(options: [UNAuthorizationOptions.alert, UNAuthorizationOptions.sound, UNAuthorizationOptions.badge]) { (willAllow: Bool, error: Error?) in
             if willAllow == true
             {
-                // Do something
+                print("Notifications is allowed")
             } else {
-                // Fråga igen nästa gång applikationen startar.
+                print("Notifications is not allowed!")
             }
             
         }

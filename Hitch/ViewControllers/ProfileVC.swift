@@ -13,7 +13,7 @@ class ProfileVC: UIViewController {
     
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var firstnameField: UILabel!
+    @IBOutlet weak var fullNameField: UILabel!
     @IBOutlet weak var cityField: UILabel!
     @IBOutlet weak var bioField: UITextView!
     
@@ -29,20 +29,22 @@ class ProfileVC: UIViewController {
     
     override func loadView() {
         super.loadView()
-        retriveUserProfileImageFromFirebaseStorage()
-        retriveNameAndBioFromFirebaseDatabase()
+        setupView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         trayDownOffset = 150
         trayUp = profileView.center
         trayDown = CGPoint(x: profileView.center.x, y: profileView.center.y - trayDownOffset)
         
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupView()
+    }
+
     @IBAction func panUp(_ sender: UIPanGestureRecognizer) {
         
         let translation = sender.translation(in: view)
@@ -65,59 +67,16 @@ class ProfileVC: UIViewController {
         }
         
     }
-    
  
     @IBAction func editProfileButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "profileToEditProfile", sender: self)
     }
     
-    func retriveNameAndBioFromFirebaseDatabase() {
-        
-        let db = Firestore.firestore()
-        
-        guard let currentUser = Auth.auth().currentUser else { return }
-        let userID = currentUser.uid
-        
-        let docRef = db.collection("users").document(userID)
-        docRef.getDocument { (DocumentSnapshot, error) in
-            if let _ = error {
-                print("Error")
-            } else {
-                let firstName = DocumentSnapshot!.get("firstName") as! String
-                let lastName = DocumentSnapshot!.get("lastName") as! String
-                let bio = DocumentSnapshot!.get("bio") as! String
-                
-                self.firstnameField.text = "\(firstName) \(lastName)"
-                self.bioField.text = bio
-                
-//                self.appDelegate.firstnameOfUser = firstname
-//                self.appDelegate.lastnameOfUser = lastname
-//                self.appDelegate.fullNameOfUser = "\(firstName) \(lastName)"
-//                self.appDelegate.bioOfUser = bio
-            }
-        }
-        
-    }
-    
-    func retriveUserProfileImageFromFirebaseStorage() {
-        
-        guard let currentUser = Auth.auth().currentUser else { return }
-        let userID = currentUser.uid
-        
-        let storage = Storage.storage()
-        let pathReference = storage.reference(withPath: "usersProfileImages/\(userID).png")
-        
-        pathReference.getData(maxSize: 2 * 1024 * 1024) { data, error in
-            if let error = error {
-                let image = #imageLiteral(resourceName: "Background Register")
-                self.profileImage.image = image
-//                self.appDelegate.userProfileImage = image
-                print(error.localizedDescription)
-            } else {
-                self.profileImage.image = UIImage(data: data!)!
-//                self.appDelegate.userProfileImage = UIImage(data: data!)!
-            }
-        }
-        
+    func setupView() {
+        profileImage.image = appDelegate.userProfileImage
+        fullNameField.text = appDelegate.fullNameOfUser
+        bioField.text = appDelegate.bioOfUser
+        cityField.text = appDelegate.cityStateOfUser
+
     }
 }

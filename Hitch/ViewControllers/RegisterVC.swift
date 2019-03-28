@@ -11,6 +11,7 @@ import Firebase
 
 class RegisterVC: UIViewController {
     
+    
     @IBOutlet weak var firstnameField: UITextField!
     @IBOutlet weak var lastnameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -77,12 +78,13 @@ class RegisterVC: UIViewController {
         guard let currentUser = Auth.auth().currentUser else { return }
         let userID = currentUser.uid
         
-        let userCredentials : [String: Any] = ["firstName": firstName,
-                                               "lastName": lastName,
+        let userCredentials : [String: Any] = ["fullName": "\(firstName) \(lastName)",
                                                "email": email,
+                                               "cityState": "Sweden, Göteborg",
                                                "bio": "This is where you type your bio..."]
         
         self.db.collection("users").document(userID).setData(userCredentials)
         
     }
+
 }
