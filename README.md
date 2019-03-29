@@ -1,5 +1,5 @@
 # Hitchy
-School project.
+My second project indiviual project and my first in Swift.
 
 This application is to make hitch hiking more efficient.
 Take the simple concept of hitch hiking directly to your phone.
